@@ -4,27 +4,34 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"strings"
 )
 
-var port = "3000"
+var port = "3030"
 
 func main() {
 	server()
 }
 
+var chttp = http.NewServeMux()
+
 func server() {
 	// serving dari folder + semua extension atau file yg diperlukan
 	// buildHandler := http.FileServer(http.Dir("client/out"))
+	// http.Handle("/", buildHandler)
+	// http.Handle("/static/", http.StripPrefix("/static/", buildHandler))
 	// http.Handle("/", http.FileServer(http.Dir("client/out")))
 	// http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-	// 	http.FileServer(http.Dir("client/out"))
 	// 	if r.URL.Path != "/" {
 	// 		http.ServeFile(w, r, "client/out/404.html")
 	// 		return
 	// 	}
 	// 	http.ServeFile(w, r, "client/out/index.html")
 	// })
-	// // serving dari function
+	// serving dari function
+	// http.HandleFunc("/", index)
+	// http.Handle("/static/", http.StripPrefix("/static/", buildHandler))
+	chttp.Handle("/", http.FileServer(http.Dir("client/out")))
 	http.HandleFunc("/", index)
 	http.HandleFunc("/data", testjson)
 	http.HandleFunc("/menu", menupage)
@@ -32,12 +39,15 @@ func server() {
 }
 
 func index(w http.ResponseWriter, r *http.Request) {
-	http.FileServer(http.Dir("client/out"))
-	if r.URL.Path != "/" {
-		http.ServeFile(w, r, "client/out/404.html")
-		return
+	if strings.Contains(r.URL.Path, ".") {
+		chttp.ServeHTTP(w, r)
+	} else {
+		if r.URL.Path != "/" {
+			http.ServeFile(w, r, "client/out/404.html")
+			return
+		}
+		http.ServeFile(w, r, "client/out/index.html")
 	}
-	http.ServeFile(w, r, "client/out/index.html")
 }
 
 type UserData []struct {

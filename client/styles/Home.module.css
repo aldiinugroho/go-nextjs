@@ -1,4 +1,11 @@
 .index_main{
   padding-top: 2rem;
   text-align: center;
+  font-family: roboto;
+  color: white;
+}
+
+@font-face {
+  font-family: roboto;
+  src: url(../public/roboto.regular.ttf);
 }
