@@ -4,6 +4,8 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"net/http/httptest"
+	"strconv"
 	"strings"
 )
 
@@ -52,6 +54,7 @@ func index(w http.ResponseWriter, r *http.Request) {
 
 type UserData []struct {
 	Name string
+	Age  int
 }
 
 func testjson(w http.ResponseWriter, r *http.Request) {
@@ -59,14 +62,36 @@ func testjson(w http.ResponseWriter, r *http.Request) {
 	// http.ServeFile(w, r, "client/build/index.html")
 
 	// sending json
-	data := UserData{{"armen"}, {"sri"}, {"eva"}, {"aldi"}}
+	data := UserData{{"armen", 20}, {"sri", 21}, {"eva", 22}, {"aldi", 23}}
 	js, _ := json.Marshal(data)
 	// w.Header().Set("Content-Type", "*")
 	w.Write(js)
 }
 
 func menupage(w http.ResponseWriter, r *http.Request) {
-	http.ServeFile(w, r, "client/out/menu.html")
+	r.ParseForm()
+	fmt.Println("===new data===")
+	fmt.Println("username : " + r.FormValue("username"))
+	fmt.Println("age : " + r.FormValue("age"))
+	fmt.Println("==============")
+	username := r.FormValue("username")
+	age := r.FormValue("age")
+	myage, _ := strconv.Atoi(age)
+	data := UserData{{username, myage}}
+	js, _ := json.Marshal(data)
+	datacokiee := string(js)
+	w.Write(js)
+	// remove " error cookie
+	fixdata := strings.Replace(datacokiee, "\"", "", -1)
+	cookie := http.Cookie{Name: "userdata", Value: fixdata}
+	// cookie start
+	recorder := httptest.NewRecorder()
+	http.SetCookie(w, &cookie)
+	request := &http.Request{Header: http.Header{"Cookie": recorder.HeaderMap["Set-Cookie"]}}
+	cookies, _ := request.Cookie("userdata")
+	fmt.Println(cookies)
+	// redirect page
+	// http.Redirect(w, r, "/", http.StatusSeeOther)
 }
 
 func serve() {

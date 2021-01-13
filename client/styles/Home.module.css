@@ -5,6 +5,25 @@
   color: white;
 }
 
+.index_form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem;
+}
+
+.index_form>div{
+  margin: 0.5rem;
+}
+
+.index_form>div>input{
+  border: none;
+  padding: 0.5rem;
+  border-radius: 5px;
+  outline: none;
+}
+
 @font-face {
   font-family: roboto;
   src: url(../public/roboto.regular.ttf);
