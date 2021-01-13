@@ -6,6 +6,9 @@
 - json in golang <br>
     > https://www.alexedwards.net/blog/golang-response-snippets <br>
 
+- string to json <br>
+    > https://www.sohamkamani.com/golang/parsing-json/ <br>
+
 - golang custome error <br>
     > https://stackoverflow.com/questions/27912409/custom-404-error-message-with-go <br>
     > https://www.alexedwards.net/blog/serving-static-sites-with-go <br>
