@@ -1,0 +1,28 @@
+.detail_main{
+    color: white;
+    padding: 1rem;
+}
+
+.detail_back{
+    background-color: orange;
+    padding: 0.3rem;
+    border-radius: 5px;
+}
+
+.detail_ctn{
+    background-color: #232323;
+    width: fit-content;
+    padding: 1rem;
+    margin-top: 2rem;
+    border-radius: 5px;
+}
+
+.detail_title{
+    background-color: #ffffff;
+    color: black;
+    width: fit-content;
+    padding: 0.5rem;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-bottom: 2rem;
+}

@@ -25,3 +25,9 @@
 
 - golang import function <br>
     > https://www.golangprograms.com/golang-import-function-from-another-folder.html <br>
+
+- setup package.json script
+    > "build": "next build && next export"
+
+- react loading spinner <br>
+    > https://medium.com/@cabhishek712/how-i-implemented-a-loading-spinner-in-a-react-application-d4cd46a3a2e0 <br>

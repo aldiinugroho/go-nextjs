@@ -12,12 +12,12 @@ func main() {
 	server()
 }
 
-var chttp = http.NewServeMux()
-
 func server() {
 	// serving dari folder + semua extension atau file yg diperlukan
+
 	// buildHandler := http.FileServer(http.Dir("client/out"))
-	// http.Handle("/", buildHandler)
+	// rootfile.Handle("/", buildHandler)
+	// http.HandleFunc("/", buildHandler)
 	// http.Handle("/static/", http.StripPrefix("/static/", buildHandler))
 	// http.Handle("/", http.FileServer(http.Dir("client/out")))
 	// http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
@@ -30,12 +30,9 @@ func server() {
 	// serving dari function
 	// http.HandleFunc("/", index)
 	// http.Handle("/static/", http.StripPrefix("/static/", buildHandler))
-	chttp.Handle("/", http.FileServer(http.Dir("client/out")))
-	http.HandleFunc("/", controller.Index)
-	http.HandleFunc("/data", controller.Testjson)
-	http.HandleFunc("/menu", controller.Menupage)
-	http.HandleFunc("/coo", controller.Tescookie)
-	http.HandleFunc("/test", controller.Clientdata)
+	// rootfile.Handle("/", http.FileServer(http.Dir("client/out")))
+	controller.Rootindex()
+	http.HandleFunc("/detail", controller.Detail)
 	serve()
 }
 

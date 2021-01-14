@@ -1,0 +1,42 @@
+.cont_main{
+    width: 100%;
+    background-color: #050b14;
+    margin-left: 20rem;
+}
+
+.cont_container{
+    color: white;
+    background-color: #232323;
+    border-radius: 5px;
+    padding: 1rem;
+    margin: 2rem;
+}
+
+.cont_container>p{
+    font-size: 0.8rem;
+    margin-top: 2rem;
+}
+
+.cont_tag{
+    width: fit-content;
+    background-color: #FFC700;
+    color: black;
+    border-radius: 5px;
+    padding: 0.2rem;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+}
+
+.cont_container>h3>a{
+    color: white;
+    text-decoration: none;
+}
+
+.imagetopConf{
+    display: flex;
+    justify-content: center;
+}
+
+.imagetopConf>img{
+    width: 5rem;
+}

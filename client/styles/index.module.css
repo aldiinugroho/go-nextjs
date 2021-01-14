@@ -1,0 +1,11 @@
+.content_main{
+    display: flex;
+    flex-direction: row;
+    width: 100rem;
+}
+
+.content_center_main{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
