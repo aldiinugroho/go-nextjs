@@ -22,3 +22,6 @@
     > https://astaxie.gitbooks.io/build-web-application-with-golang/content/en/06.1.html <br>
     > https://golangcode.com/add-a-http-cookie/ <br>
     > https://gist.github.com/jonnyreeves/17f91155a0d4a5d296d6/revisions <br>
+
+- golang import function <br>
+    > https://www.golangprograms.com/golang-import-function-from-another-folder.html <br>
