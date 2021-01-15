@@ -3,10 +3,11 @@ import cont from "../styles/component_styles/content_style.module.css"
 import limit from "../styles/component_styles/nav_n_cont_style.module.css"
 
 const Content = () => {
-    const URL = 'http://www.json-generator.com/api/json/get/bMRCXUIhhK?indent=2'
+    const URL = 'http://localhost:3030/getContent'
 
     const GetData = () => {
         const [Cdata, setCdata] = useState([])
+        const [loading, setLoading] = useState(false)
         
         useEffect(() => {
             try {
@@ -14,31 +15,43 @@ const Content = () => {
                     const rawdata = await fetch(URL)
                     const jsondata = await rawdata.json()
                     setCdata(jsondata)
+                    setLoading(true)
                 }
                 fetchdata()
             } catch (error) {
                 
             }
         },[])
-        if (Cdata !== "") {
-            return (
-                <div>
-                    {Cdata.map((data,idx) => (
-                        <div key={idx} className={cont.cont_container}>
-                            <h3>
-                                <a href="/detail">{data.title}</a>
-                            </h3>
-                            <p>{data.content}</p>
-                            <p className={cont.cont_tag}>{data.tag}</p>
-                        </div>        
-                    ))}
-                </div>
-            )
+        
+        if (loading === true) {
+            if (Cdata !== "") {
+                return (
+                    <div>
+                        {Cdata.map((data,idx) => (
+                            <div key={idx} className={cont.cont_container}>
+                                <h3>
+                                    <a href="/detail">{data.Title}</a>
+                                </h3>
+                                <p>{data.Content}</p>
+                                <p className={cont.cont_tag}>{data.Tag}</p>
+                            </div>        
+                        ))}
+                    </div>
+                )
+            } else {
+                return (
+                    <div className={cont.cont_container}>
+                        No content sorry :)
+                    </div>        
+                )
+            }
         } else {
             return (
-                <div className={cont.cont_container}>
-                    No content sorry :)
-                </div>        
+                <div>
+                    <div className={cont.cont_loading}>
+                        <div><img src="/loading.gif" draggable="false"/></div>
+                    </div>
+                </div>
             )
         }
     }

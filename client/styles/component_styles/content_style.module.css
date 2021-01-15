@@ -40,3 +40,7 @@
 .imagetopConf>img{
     width: 5rem;
 }
+
+.cont_loading{
+    text-align: center;
+}

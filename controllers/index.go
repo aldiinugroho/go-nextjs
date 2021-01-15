@@ -1,7 +1,9 @@
 package controllers
 
 import (
+	"encoding/json"
 	"net/http"
+	"rst/models"
 	"strings"
 )
 
@@ -24,16 +26,29 @@ func index(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-// func Testjson(w http.ResponseWriter, r *http.Request) {
-// 	// fmt.Fprint(w, "helooo aldi")
-// 	// http.ServeFile(w, r, "client/build/index.html")
+func GetContent(w http.ResponseWriter, r *http.Request) {
+	// sending json
+	data := models.GetContentData{
+		{"armen rais", "20", "kepala keluarga"},
+		{"sri sulistiyowati", "21", "ibu rmh tangga"},
+		{"eva nur lizar", "22", "anak"},
+		{"aldi nugroho", "23", "anak"}}
+	js, _ := json.Marshal(data)
+	// w.Header().Set("Content-Type", "*")
+	w.Write(js)
+}
 
-// 	// sending json
-// 	data := UserData{{"armen rais", 20}, {"sri sulistiyowati", 21}, {"eva nur lizar", 22}, {"aldi nugroho", 23}}
-// 	js, _ := json.Marshal(data)
-// 	// w.Header().Set("Content-Type", "*")
-// 	w.Write(js)
-// }
+func GetTag(w http.ResponseWriter, r *http.Request) {
+	// sending json
+	data := models.GetTagData{
+		{"#FFC700", "JavaScript"},
+		{"#6DDBDB", "Golang / Go"},
+		{"#00A8CD", "React"},
+		{"#FF0000", "MySQL"}}
+	js, _ := json.Marshal(data)
+	// w.Header().Set("Content-Type", "*")
+	w.Write(js)
+}
 
 // func Clientdata(w http.ResponseWriter, r *http.Request) {
 // 	// fmt.Fprint(w, "oke")

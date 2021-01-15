@@ -33,6 +33,8 @@ func server() {
 	// rootfile.Handle("/", http.FileServer(http.Dir("client/out")))
 	controller.Rootindex()
 	http.HandleFunc("/detail", controller.Detail)
+	http.HandleFunc("/getContent", controller.GetContent)
+	http.HandleFunc("/getTag", controller.GetTag)
 	serve()
 }
 

@@ -1,18 +1,41 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import navcss from "../styles/component_styles/nav_style.module.css"
 import limit from "../styles/component_styles/nav_n_cont_style.module.css"
 import testdata_tag from "../testdata/testdata_tag"
 
 const Nav = () => {
+    const URL = 'http://localhost:3030/getTag'
+
     const GetTag = () => {
-        const URL = testdata_tag
-        return (
-            <div className={navcss.nav_tagConf}>
-                {URL.map((tag,idx) => (
-                    <a href="#" key={idx} className={navcss.nav_tag} style={{background: tag.color}}>{tag.tag_name}</a>
-                ))}
-            </div>
-        )
+        const [tagdata, setTagdata] = useState([])
+        const [loading, setLoading] = useState(false)
+
+        useEffect(() => {
+            try {
+                async function fetchdata() {
+                    const rawdata = await fetch(URL)
+                    const jsondata = await rawdata.json()
+                    setTagdata(jsondata)
+                    setLoading(true)
+                }
+                fetchdata()
+            } catch (error) {
+                
+            }
+        },[])
+        if (loading === true) {
+            return (
+                <div className={navcss.nav_tagConf}>
+                    {tagdata.map((tag,idx) => (
+                        <a href="#" key={idx} className={navcss.nav_tag} style={{background: tag.Color}}>{tag.Tag_name}</a>
+                    ))}
+                </div>
+            )
+        } else {
+            return (
+                <div>Getting data..</div>
+            )
+        }
     }
     
     return (
