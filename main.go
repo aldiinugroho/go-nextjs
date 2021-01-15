@@ -3,7 +3,8 @@ package main
 import (
 	"fmt"
 	"net/http"
-	controller "rst/controllers"
+	controller "rst/controller"
+	database "rst/database"
 )
 
 var port = "3030"
@@ -31,10 +32,12 @@ func server() {
 	// http.HandleFunc("/", index)
 	// http.Handle("/static/", http.StripPrefix("/static/", buildHandler))
 	// rootfile.Handle("/", http.FileServer(http.Dir("client/out")))
+
 	controller.Rootindex()
 	http.HandleFunc("/detail", controller.Detail)
 	http.HandleFunc("/getContent", controller.GetContent)
 	http.HandleFunc("/getTag", controller.GetTag)
+	database.Database()
 	serve()
 }
 

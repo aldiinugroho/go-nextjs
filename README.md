@@ -31,3 +31,6 @@
 
 - react loading spinner <br>
     > https://medium.com/@cabhishek712/how-i-implemented-a-loading-spinner-in-a-react-application-d4cd46a3a2e0 <br>
+
+- gorm references <br>
+    > https://stackoverflow.com/questions/63726170/how-to-reference-a-composite-primary-key-in-gorm/63731259#63731259 <br>
