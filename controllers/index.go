@@ -1,9 +1,9 @@
-package controller
+package controllers
 
 import (
 	"encoding/json"
 	"net/http"
-	model "rst/model"
+	"rst/models"
 	"strings"
 )
 
@@ -28,7 +28,7 @@ func index(w http.ResponseWriter, r *http.Request) {
 
 func GetContent(w http.ResponseWriter, r *http.Request) {
 	// sending json
-	data := model.GetContentData{
+	data := models.GetContentData{
 		{"armen rais", "20", "kepala keluarga"},
 		{"sri sulistiyowati", "21", "ibu rmh tangga"},
 		{"eva nur lizar", "22", "anak"},
@@ -40,7 +40,7 @@ func GetContent(w http.ResponseWriter, r *http.Request) {
 
 func GetTag(w http.ResponseWriter, r *http.Request) {
 	// sending json
-	data := model.GetTagData{
+	data := models.GetTagData{
 		{"#FFC700", "JavaScript"},
 		{"#6DDBDB", "Golang / Go"},
 		{"#00A8CD", "React"},

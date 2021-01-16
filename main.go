@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
-	controller "rst/controller"
+	controller "rst/controllers"
 	database "rst/database"
 )
 
