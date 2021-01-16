@@ -1,4 +1,4 @@
-package database
+package oke
 
 import (
 	migration "rst/database/migrations"

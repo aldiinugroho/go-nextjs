@@ -2,9 +2,12 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"net/http"
 	controller "rst/controllers"
 	database "rst/database"
+
+	"github.com/joho/godotenv"
 )
 
 var port = "3030"
@@ -32,7 +35,7 @@ func server() {
 	// http.HandleFunc("/", index)
 	// http.Handle("/static/", http.StripPrefix("/static/", buildHandler))
 	// rootfile.Handle("/", http.FileServer(http.Dir("client/out")))
-
+	env()
 	controller.Rootindex()
 	http.HandleFunc("/detail", controller.Detail)
 	http.HandleFunc("/getContent", controller.GetContent)
@@ -44,4 +47,11 @@ func server() {
 func serve() {
 	fmt.Println("Server run at port : " + port)
 	http.ListenAndServe(":"+port, nil)
+}
+
+func env() {
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
 }
