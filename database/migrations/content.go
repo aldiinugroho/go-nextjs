@@ -1,6 +1,7 @@
 package migrations
 
 import (
+	"fmt"
 	"os"
 	model "rst/models"
 
@@ -10,12 +11,22 @@ import (
 
 func Content() {
 	// connection := "host=localhost user=postgres password=2201 dbname=myweb port=5432 sslmode=disable TimeZone=Asia/Jakarta"
-	db, _ := gorm.Open(postgres.Open(os.Getenv("DB_CONNECTION")), &gorm.Config{})
+	db, err := gorm.Open(postgres.Open(os.Getenv("DB_CONNECTION")), &gorm.Config{})
+	if err != nil {
+		fmt.Println("connecttion error")
+	}
 	db.Migrator().AutoMigrate(&model.Content{})
+	sqlDB, err := db.DB()
+	sqlDB.Close()
 }
 
 func DropContent() {
 	// connection := "host=localhost user=postgres password=2201 dbname=myweb port=5432 sslmode=disable TimeZone=Asia/Jakarta"
-	db, _ := gorm.Open(postgres.Open(os.Getenv("DB_CONNECTION")), &gorm.Config{})
+	db, err := gorm.Open(postgres.Open(os.Getenv("DB_CONNECTION")), &gorm.Config{})
+	if err != nil {
+		fmt.Println("connecttion error")
+	}
 	db.Migrator().DropTable("contents")
+	sqlDB, err := db.DB()
+	sqlDB.Close()
 }

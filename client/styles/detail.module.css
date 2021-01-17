@@ -11,7 +11,6 @@
 
 .detail_ctn{
     background-color: #232323;
-    width: fit-content;
     padding: 1rem;
     margin-top: 2rem;
     border-radius: 5px;
@@ -25,4 +24,19 @@
     border-radius: 5px;
     font-weight: bold;
     margin-bottom: 2rem;
+}
+
+.detail_loading{
+    margin-top: 1rem;
+}
+
+.detail_tag{
+    font-size: 0.8rem;
+    margin-top: 1rem;
+    width: fit-content;
+    color: black;
+    border-radius: 5px;
+    padding: 0.2rem;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
 }

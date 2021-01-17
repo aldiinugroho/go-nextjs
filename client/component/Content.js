@@ -30,10 +30,10 @@ const Content = () => {
                         {Cdata.map((data,idx) => (
                             <div key={idx} className={cont.cont_container}>
                                 <h3>
-                                    <a href="/detail">{data.Title}</a>
+                                    <a href={"/clickDetail/"+data.ContentID}>{data.ContentTitle}</a>
                                 </h3>
-                                <p>{data.Content}</p>
-                                <p className={cont.cont_tag}>{data.Tag}</p>
+                                <p>{data.ContentContent}</p>
+                                <p className={cont.cont_tag} style={{background: data.Tag.TagColor}}>{data.Tag.TagName}</p>
                             </div>        
                         ))}
                     </div>

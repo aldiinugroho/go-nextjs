@@ -1,17 +1,41 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import detailcss from "../styles/detail.module.css"
 import testdata_satu from "../testdata/testdata_satu"
 
 const detail = () => {
+    const URL = 'http://localhost:3030/clickDetail/getDetail'
+    // const URL_DEV = 'http://www.json-generator.com/api/json/get/craPDFlpxK?indent=2'
 
     const GetDetail = () => {
-        const URL = testdata_satu[0]
-        return (
-            <div className={detailcss.detail_ctn}>
-                <div className={detailcss.detail_title}>{URL.title}</div>
-                <div>{URL.content}</div>
-            </div>
-        )
+        const [detaildata, setDetail] = useState([])
+        const [loading, setLoading] = useState(false)
+
+        useEffect(() => {
+            try {
+                async function fetchdata() {
+                    const rawdata = await fetch(URL)
+                    const jsondata = await rawdata.json()
+                    setDetail(jsondata)
+                    setLoading(true)
+                }
+                fetchdata()
+            } catch (error) {
+                
+            }
+        },[])
+        if (loading === true) {
+            return (
+                <div className={detailcss.detail_ctn}>
+                    <div className={detailcss.detail_title}>{detaildata.ContentTitle}</div>
+                    <div>{detaildata.ContentContent}</div>
+                    <div className={detailcss.detail_tag} style={{background: detaildata.Tag.TagColor}}>{detaildata.Tag.TagName}</div>
+                </div>
+            )
+        } else {
+            return (
+                <div className={detailcss.detail_loading}>Getting detail..</div>
+            )
+        }
     }
 
     return (

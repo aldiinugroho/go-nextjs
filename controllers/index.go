@@ -2,9 +2,15 @@ package controllers
 
 import (
 	"encoding/json"
+	"fmt"
 	"net/http"
+	"os"
 	"rst/models"
 	"strings"
+
+	"gorm.io/driver/postgres"
+	"gorm.io/gorm"
+	"gorm.io/gorm/clause"
 )
 
 var rootfile = http.NewServeMux()
@@ -28,26 +34,46 @@ func index(w http.ResponseWriter, r *http.Request) {
 
 func GetContent(w http.ResponseWriter, r *http.Request) {
 	// sending json
-	data := models.GetContentData{
-		{"armen rais", "20", "kepala keluarga"},
-		{"sri sulistiyowati", "21", "ibu rmh tangga"},
-		{"eva nur lizar", "22", "anak"},
-		{"aldi nugroho", "23", "anak"}}
-	js, _ := json.Marshal(data)
+	db, err := gorm.Open(postgres.Open(os.Getenv("DB_CONNECTION")), &gorm.Config{})
+	if err != nil {
+		fmt.Println("connecttion error")
+	}
+	var contents []models.Content
+	// db.Find(&contents)
+	db.Preload(clause.Associations).Find(&contents)
+	// data := models.GetContentData{
+	// 	{"armen rais", "20", "kepala keluarga"},
+	// 	{"sri sulistiyowati", "21", "ibu rmh tangga"},
+	// 	{"eva nur lizar", "22", "anak"},
+	// 	{"aldi nugroho", "23", "anak"}}
+	js, _ := json.Marshal(contents)
 	// w.Header().Set("Content-Type", "*")
 	w.Write(js)
+	sqlDB, err := db.DB()
+	sqlDB.Close()
 }
 
 func GetTag(w http.ResponseWriter, r *http.Request) {
 	// sending json
-	data := models.GetTagData{
-		{"#FFC700", "JavaScript"},
-		{"#6DDBDB", "Golang / Go"},
-		{"#00A8CD", "React"},
-		{"#FF0000", "MySQL"}}
-	js, _ := json.Marshal(data)
-	// w.Header().Set("Content-Type", "*")
+	// data := models.GetTagData{
+	// 	{"#FFC700", "JavaScript"},
+	// 	{"#6DDBDB", "Golang / Go"},
+	// 	{"#00A8CD", "React"},
+	// 	{"#FF0000", "MySQL"}}
+	// js, _ := json.Marshal(data)
+	// // w.Header().Set("Content-Type", "*")
+	// w.Write(js)
+
+	db, err := gorm.Open(postgres.Open(os.Getenv("DB_CONNECTION")), &gorm.Config{})
+	if err != nil {
+		fmt.Println("connecttion error")
+	}
+	var tags []models.Tag
+	db.Find(&tags)
+	js, _ := json.Marshal(tags)
 	w.Write(js)
+	sqlDB, err := db.DB()
+	sqlDB.Close()
 }
 
 // func Clientdata(w http.ResponseWriter, r *http.Request) {

@@ -9,15 +9,16 @@ import (
 	"gorm.io/gorm"
 )
 
-func tagseeder() {
+func contentseeder() {
 	// connection := "host=localhost user=postgres password=2201 dbname=myweb port=5432 sslmode=disable TimeZone=Asia/Jakarta"
 	db, err := gorm.Open(postgres.Open(os.Getenv("DB_CONNECTION")), &gorm.Config{})
 	if err != nil {
 		fmt.Println("connecttion error")
 	}
-	var tag = []model.Tag{{TagName: "Golang / Go", TagColor: "#03fcdb"},
-		{TagName: "JavaScript", TagColor: "#fce303"}}
-	db.Create(&tag)
+	var content = []model.Content{{TagID: 2, ContentTitle: "Fetch data in javascript", ContentContent: "get url insert it into function"},
+		{TagID: 2, ContentTitle: "useEffect in react", ContentContent: "call the method use it"},
+		{TagID: 1, ContentTitle: "scan white space in golang", ContentContent: "get function ...."}}
+	db.Create(&content)
 	sqlDB, err := db.DB()
 	sqlDB.Close()
 }

@@ -40,6 +40,8 @@ func server() {
 	http.HandleFunc("/detail", controller.Detail)
 	http.HandleFunc("/getContent", controller.GetContent)
 	http.HandleFunc("/getTag", controller.GetTag)
+	http.HandleFunc("/clickDetail/", controller.ClickDetail)
+	http.HandleFunc("/clickDetail/getDetail", controller.GetDetail)
 	database.Database()
 	serve()
 }

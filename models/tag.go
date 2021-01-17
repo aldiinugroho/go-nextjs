@@ -1,5 +1,7 @@
 package models
 
+import "time"
+
 // GetTagData for ....
 type GetTagData []struct {
 	Color    string
@@ -8,7 +10,9 @@ type GetTagData []struct {
 
 // Tag for ....
 type Tag struct {
-	TagID    uint   `gorm:"primaryKey; not null" json:"TagID"`
-	TagColor string `json:"TagColor"`
-	TagName  string `json:"TagName"`
+	TagID     uint      `gorm:"primaryKey; not null" json:"TagID"`
+	TagColor  string    `json:"TagColor"`
+	TagName   string    `json:"TagName"`
+	CreatedAt time.Time `json:"CreatedAt"`
+	UpdatedAt time.Time `json:"UpdatedAt"`
 }
