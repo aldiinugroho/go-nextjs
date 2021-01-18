@@ -39,8 +39,8 @@ func GetContent(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("connecttion error")
 	}
 	var contents []models.Content
-	// db.Find(&contents)
-	db.Preload(clause.Associations).Find(&contents)
+	// db.Order("created_at desc").Find(&contents)
+	db.Preload(clause.Associations).Order("created_at desc").Find(&contents)
 	// data := models.GetContentData{
 	// 	{"armen rais", "20", "kepala keluarga"},
 	// 	{"sri sulistiyowati", "21", "ibu rmh tangga"},

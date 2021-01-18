@@ -15,8 +15,8 @@ func tagseeder() {
 	if err != nil {
 		fmt.Println("connecttion error")
 	}
-	var tag = []model.Tag{{TagName: "Golang / Go", TagColor: "#03fcdb"},
-		{TagName: "JavaScript", TagColor: "#fce303"}}
+	var tag = []model.Tag{{TagName: "Golang", TagColor: "#03fcdb"},
+		{TagName: "Javascript", TagColor: "#fce303"}}
 	db.Create(&tag)
 	sqlDB, err := db.DB()
 	sqlDB.Close()

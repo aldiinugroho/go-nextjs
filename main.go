@@ -38,6 +38,8 @@ func server() {
 	env()
 	controller.Rootindex()
 	http.HandleFunc("/detail", controller.Detail)
+	http.HandleFunc("/input", controller.Input)
+	http.HandleFunc("/inputdata", controller.Inputdata)
 	http.HandleFunc("/getContent", controller.GetContent)
 	http.HandleFunc("/getTag", controller.GetTag)
 	http.HandleFunc("/clickDetail/", controller.ClickDetail)
