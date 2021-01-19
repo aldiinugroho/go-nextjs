@@ -5,7 +5,6 @@ import (
 	"log"
 	"net/http"
 	controller "rst/controllers"
-	database "rst/database"
 
 	"github.com/joho/godotenv"
 )
@@ -51,7 +50,7 @@ func server() {
 	http.HandleFunc("/clickDetail/", controller.ClickDetail)
 	http.HandleFunc("/clickDetail/getDetail", controller.GetDetail)
 	http.HandleFunc("/detail", controller.Detail)
-	database.Database()
+	// database.Database()
 	serve()
 }
 

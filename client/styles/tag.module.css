@@ -14,16 +14,19 @@
 }
 
 .tag_detailcont{
+    display: flex;
+    flex-direction: column;
     background-color: #232323;
     color: white;
     border-radius: 5px;
     padding: 1rem;
     /* margin-top: 2rem; */
     width: 15rem;
-    height: fit-content;
+    height: 10rem;
+    justify-content: space-between;
 }
 
-.tag_detailcont>h3>a{
+.tag_detailcont>div>h3>a{
     color: white;
 }
 
@@ -47,4 +50,9 @@
     padding: 0.3rem;
     border-radius: 5px;
     /* margin: 2rem; */
+}
+
+.tag_content{
+    height: fit-content;
+    font-size: 0.8rem;
 }

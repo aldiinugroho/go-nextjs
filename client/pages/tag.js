@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import tagcss from "../styles/tag.module.css"
 
 const tag = () => {
-    // const URL_DEV = 'http://www.json-generator.com/api/json/get/coCWKHGGyG?indent=2'
+    // const URL_DEV = 'http://www.json-generator.com/api/json/get/bUEczarnUy?indent=2'
     const URL = 'http://localhost:3030/clickTag/getDetail'
 
     const GetTagDetail = () => {
@@ -29,11 +29,13 @@ const tag = () => {
                     <div className={tagcss.tag_detailmain}>
                         {Cdata.map((data,idx) => (
                             <div key={idx} className={tagcss.tag_detailcont}>
-                                <h3>
-                                    <a href={"/clickDetail/"+data.ContentID}>{data.ContentTitle}</a>
-                                </h3>
-                                <p>{data.ContentContent}</p>
-                                <p className={tagcss.tag_tagname} style={{background: data.Tag.TagColor}}>{data.Tag.TagName}</p>
+                                <div>
+                                    <h3>
+                                        <a href={"/clickDetail/"+data.ContentID}>{data.ContentTitle}</a>
+                                    </h3>
+                                </div>
+                                <div><p className={tagcss.tag_content}>{data.ContentContent.substring(0,115)+"..."}</p></div>
+                                <div><p className={tagcss.tag_tagname} style={{background: data.Tag.TagColor}}>{data.Tag.TagName}</p></div>
                             </div>        
                         ))}
                     </div>

@@ -6,6 +6,7 @@
     overflow-x: hidden;
     /* consider to active left */
     left: 0;
+    transition: 0.4s ease-in-out;
 }
 
 .nav_tag{
@@ -54,4 +55,11 @@
     margin: 0.2rem;
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
+}
+
+@media screen and (max-width: 650px) {
+    .nav_main{
+        transition: 0.4s ease-in-out;
+        display: none;
+    }
 }
