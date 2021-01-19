@@ -9,7 +9,7 @@ import (
 	"github.com/joho/godotenv"
 )
 
-var port = "3030"
+var port = "80"
 
 func main() {
 	server()
@@ -38,7 +38,7 @@ func server() {
 	controller.Rootindex()
 
 	http.HandleFunc("/inputdata", controller.Inputdata)
-	http.HandleFunc("/input", controller.Input)
+	// http.HandleFunc("/inputpass2201", controller.Input)
 
 	http.HandleFunc("/getContent", controller.GetContent)
 	http.HandleFunc("/getTag", controller.GetTag)

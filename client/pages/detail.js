@@ -3,7 +3,8 @@ import detailcss from "../styles/detail.module.css"
 import testdata_satu from "../testdata/testdata_satu"
 
 const detail = () => {
-    const URL = 'http://localhost:3030/clickDetail/getDetail'
+    // const URL = 'http://localhost:3030/clickDetail/getDetail'
+    const URL_PROD = 'http://125.161.163.230/clickDetail/getDetail'
     // const URL_DEV = 'http://www.json-generator.com/api/json/get/craPDFlpxK?indent=2'
 
     const GetDetail = () => {
@@ -13,7 +14,7 @@ const detail = () => {
         useEffect(() => {
             try {
                 async function fetchdata() {
-                    const rawdata = await fetch(URL)
+                    const rawdata = await fetch(URL_PROD)
                     const jsondata = await rawdata.json()
                     setDetail(jsondata)
                     setLoading(true)

@@ -3,8 +3,8 @@ import cont from "../styles/component_styles/content_style.module.css"
 import limit from "../styles/component_styles/nav_n_cont_style.module.css"
 
 const Content = () => {
-    const URL = 'http://localhost:3030/getContent'
-
+    // const URL = 'http://localhost:3030/getContent'
+    const URL_PROD = 'http://125.161.163.230/getContent'
     const GetData = () => {
         const [Cdata, setCdata] = useState([])
         const [loading, setLoading] = useState(false)
@@ -12,7 +12,7 @@ const Content = () => {
         useEffect(() => {
             try {
                 async function fetchdata() {
-                    const rawdata = await fetch(URL)
+                    const rawdata = await fetch(URL_PROD)
                     const jsondata = await rawdata.json()
                     setCdata(jsondata)
                     setLoading(true)

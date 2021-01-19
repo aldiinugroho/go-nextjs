@@ -63,7 +63,6 @@ func GetTag(w http.ResponseWriter, r *http.Request) {
 	// js, _ := json.Marshal(data)
 	// // w.Header().Set("Content-Type", "*")
 	// w.Write(js)
-
 	db, err := gorm.Open(postgres.Open(os.Getenv("DB_CONNECTION")), &gorm.Config{})
 	if err != nil {
 		fmt.Println("connecttion error")

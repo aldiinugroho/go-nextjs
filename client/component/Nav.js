@@ -4,7 +4,8 @@ import limit from "../styles/component_styles/nav_n_cont_style.module.css"
 import testdata_tag from "../testdata/testdata_tag"
 
 const Nav = () => {
-    const URL = 'http://localhost:3030/getTag'
+    // const URL = 'http://localhost:3030/getTag'
+    const URL_PROD = 'http://125.161.163.230/getTag'
 
     const GetTag = () => {
         const [tagdata, setTagdata] = useState([])
@@ -13,7 +14,7 @@ const Nav = () => {
         useEffect(() => {
             try {
                 async function fetchdata() {
-                    const rawdata = await fetch(URL)
+                    const rawdata = await fetch(URL_PROD)
                     const jsondata = await rawdata.json()
                     setTagdata(jsondata)
                     setLoading(true)
