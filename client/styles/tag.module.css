@@ -1,0 +1,50 @@
+.tag_main{
+    margin: 1rem;
+}
+
+.tag_detailmain{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.tag_detailmain>div{
+    margin: 1rem;
+}
+
+.tag_detailcont{
+    background-color: #232323;
+    color: white;
+    border-radius: 5px;
+    padding: 1rem;
+    /* margin-top: 2rem; */
+    width: 15rem;
+    height: fit-content;
+}
+
+.tag_detailcont>h3>a{
+    color: white;
+}
+
+.tag_detailcont>p{
+    font-size: 0.8rem;
+    margin-top: 2rem;
+}
+
+.tag_tagname{
+    width: fit-content;
+    color: black;
+    font-size: 0.8rem;
+    border-radius: 5px;
+    padding: 0.2rem;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+}
+
+.tag_back{
+    background-color: orange;
+    padding: 0.3rem;
+    border-radius: 5px;
+    /* margin: 2rem; */
+}

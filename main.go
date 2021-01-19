@@ -37,13 +37,20 @@ func server() {
 	// rootfile.Handle("/", http.FileServer(http.Dir("client/out")))
 	env()
 	controller.Rootindex()
-	http.HandleFunc("/detail", controller.Detail)
-	http.HandleFunc("/input", controller.Input)
+
 	http.HandleFunc("/inputdata", controller.Inputdata)
+	http.HandleFunc("/input", controller.Input)
+
 	http.HandleFunc("/getContent", controller.GetContent)
 	http.HandleFunc("/getTag", controller.GetTag)
+
+	http.HandleFunc("/clickTag/", controller.ClickTag)
+	http.HandleFunc("/clickTag/getDetail", controller.GetTag_detail)
+	http.HandleFunc("/tag", controller.Tag)
+
 	http.HandleFunc("/clickDetail/", controller.ClickDetail)
 	http.HandleFunc("/clickDetail/getDetail", controller.GetDetail)
+	http.HandleFunc("/detail", controller.Detail)
 	database.Database()
 	serve()
 }

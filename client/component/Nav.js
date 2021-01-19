@@ -27,7 +27,7 @@ const Nav = () => {
             return (
                 <div className={navcss.nav_tagConf}>
                     {tagdata.map((tag,idx) => (
-                        <a href="#" key={idx} className={navcss.nav_tag} style={{background: tag.TagColor}}>{tag.TagName}</a>
+                        <a href={"/clickTag/"+tag.TagID} key={idx} className={navcss.nav_tag} style={{background: tag.TagColor}}>{tag.TagName}</a>
                     ))}
                 </div>
             )
