@@ -5,11 +5,12 @@ import (
 	"log"
 	"net/http"
 	controller "rst/controllers"
+	error "rst/errors"
 
 	"github.com/joho/godotenv"
 )
 
-var port = "80"
+var port = "81"
 
 func main() {
 	server()
@@ -38,7 +39,7 @@ func server() {
 	controller.Rootindex()
 
 	http.HandleFunc("/inputdata", controller.Inputdata)
-	// http.HandleFunc("/inputpass2201", controller.Input)
+	http.HandleFunc("/inputpass2201", controller.Input)
 
 	http.HandleFunc("/getContent", controller.GetContent)
 	http.HandleFunc("/getTag", controller.GetTag)
@@ -55,6 +56,7 @@ func server() {
 }
 
 func serve() {
+	error.Check()
 	fmt.Println("Server run at port : " + port)
 	http.ListenAndServe(":"+port, nil)
 }

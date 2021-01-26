@@ -8,6 +8,8 @@ import (
 	"rst/models"
 	"strings"
 
+	error "rst/errors"
+
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"gorm.io/gorm/clause"
@@ -16,6 +18,7 @@ import (
 var rootfile = http.NewServeMux()
 
 func Rootindex() {
+	error.Check()
 	rootfile.Handle("/", http.FileServer(http.Dir("client/out")))
 	http.HandleFunc("/", index)
 }
@@ -33,6 +36,7 @@ func index(w http.ResponseWriter, r *http.Request) {
 }
 
 func GetContent(w http.ResponseWriter, r *http.Request) {
+	error.Check()
 	// sending json
 	db, err := gorm.Open(postgres.Open(os.Getenv("DB_CONNECTION")), &gorm.Config{})
 	if err != nil {
@@ -54,6 +58,7 @@ func GetContent(w http.ResponseWriter, r *http.Request) {
 }
 
 func GetTag(w http.ResponseWriter, r *http.Request) {
+	error.Check()
 	// sending json
 	// data := models.GetTagData{
 	// 	{"#FFC700", "JavaScript"},

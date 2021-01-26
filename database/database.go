@@ -2,7 +2,6 @@ package oke
 
 import (
 	migration "rst/database/migrations"
-	seed "rst/database/seeds"
 )
 
 func Database() {
@@ -23,5 +22,5 @@ func Database() {
 	migration.DropContent()
 	migration.Tag()
 	migration.Content()
-	seed.Seeder()
+	// seed.Seeder()
 }

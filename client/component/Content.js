@@ -3,8 +3,8 @@ import cont from "../styles/component_styles/content_style.module.css"
 import limit from "../styles/component_styles/nav_n_cont_style.module.css"
 
 const Content = () => {
-    // const URL = 'http://localhost:3030/getContent'
-    const URL_PROD = 'http://125.161.163.230/getContent'
+    // const URL = 'http://www.json-generator.com/api/json/get/bVYcmFqzyq?indent=2'
+    const URL_PROD = 'http://bacotsantuy.ddns.net:80/getContent'
     const GetData = () => {
         const [Cdata, setCdata] = useState([])
         const [loading, setLoading] = useState(false)
@@ -59,9 +59,9 @@ const Content = () => {
     return (
         <div className={cont.cont_main}>
             <div className={limit.nav_n_cont_limit}>
-                <div className={cont.imagetopConf}>
+                {/* <div className={cont.imagetopConf}>
                     <img src="/top.png" draggable="false"/>
-                </div>
+                </div> */}
                 {GetData()}
                 {/* <div className={cont.cont_container}>
                     <h3>          

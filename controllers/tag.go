@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"net/http"
 	"os"
+	error "rst/errors"
 	param "rst/errors"
 	model "rst/models"
 
@@ -14,10 +15,12 @@ import (
 )
 
 func Tag(w http.ResponseWriter, r *http.Request) {
+	error.Check()
 	http.ServeFile(w, r, "client/out/tag.html")
 }
 
 func GetTag_detail(w http.ResponseWriter, r *http.Request) {
+	error.Check()
 	var contents = []model.Content{}
 	getvalue, _ := r.Cookie("contentvalue")
 	db, err := gorm.Open(postgres.Open(os.Getenv("DB_CONNECTION")), &gorm.Config{})
@@ -32,6 +35,7 @@ func GetTag_detail(w http.ResponseWriter, r *http.Request) {
 }
 
 func ClickTag(w http.ResponseWriter, r *http.Request) {
+	error.Check()
 	path := r.URL.Path
 	x := param.Parameter_tag(path)
 	if x == "0" || x == "" {

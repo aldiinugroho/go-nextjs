@@ -4,7 +4,7 @@ import tagcss from "../styles/tag.module.css"
 const tag = () => {
     // const URL_DEV = 'http://www.json-generator.com/api/json/get/bUEczarnUy?indent=2'
     // const URL = 'http://localhost:3030/clickTag/getDetail'
-    const URL_PROD = 'http://125.161.163.230/clickTag/getDetail'
+    const URL_PROD = 'http://bacotsantuy.ddns.net:80/clickTag/getDetail'
 
     const GetTagDetail = () => {
         const [Cdata, setCdata] = useState([])

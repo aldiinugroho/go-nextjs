@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/http"
 	"os"
+	error "rst/errors"
 	model "rst/models"
 
 	"gorm.io/driver/postgres"
@@ -11,10 +12,12 @@ import (
 )
 
 func Input(w http.ResponseWriter, r *http.Request) {
+	error.Check()
 	http.ServeFile(w, r, "client/out/input.html")
 }
 
 func Inputdata(w http.ResponseWriter, r *http.Request) {
+	error.Check()
 	title := r.FormValue("title")
 	content := r.FormValue("message")
 	tagname := r.FormValue("tag")
