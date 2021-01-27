@@ -54,7 +54,7 @@ const Nav = () => {
                     <div className={navcss.nav_tag}>aldi</div>
                 </div> */}
                 <div className={navcss.nav_mine}>
-                    <a href="">Comment</a>
+                    <a href="/input">Comment</a>
                 </div>
                 <div className={navcss.nav_mine}>
                     <a href="/signup">Sign up</a>

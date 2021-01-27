@@ -21,7 +21,7 @@ func Inputdata(w http.ResponseWriter, r *http.Request) {
 	title := r.FormValue("title")
 	content := r.FormValue("message")
 	tagname := r.FormValue("tag")
-	tagcolor := r.FormValue("tagcolor")
+	tagcolor := "#ffffff"
 	// open db
 	db, err := gorm.Open(postgres.Open(os.Getenv("DB_CONNECTION")), &gorm.Config{})
 	if err != nil {

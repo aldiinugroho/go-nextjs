@@ -1,0 +1,29 @@
+.signup_form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 5rem;
+}
+
+.signup_form>div>input{
+    padding: 0.5rem;
+    width: 20rem;
+    border: none;
+    outline: none;
+    margin: 0.5rem;
+    border-radius: 3px;
+}
+
+.signup_form>div>h1{
+    color: white;
+}
+
+.signup_form>div>button{
+    border: none;
+    padding: 0.5rem;
+    margin-top: 1rem;
+    border-radius: 3px;
+    cursor: pointer;
+    background-color: rgb(75, 255, 59);
+}

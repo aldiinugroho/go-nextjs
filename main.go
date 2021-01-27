@@ -39,7 +39,7 @@ func server() {
 	controller.Rootindex()
 
 	http.HandleFunc("/inputdata", controller.Inputdata)
-	http.HandleFunc("/inputpass2201", controller.Input)
+	http.HandleFunc("/input", controller.Input)
 
 	http.HandleFunc("/getContent", controller.GetContent)
 	http.HandleFunc("/getTag", controller.GetTag)
@@ -51,6 +51,12 @@ func server() {
 	http.HandleFunc("/clickDetail/", controller.ClickDetail)
 	http.HandleFunc("/clickDetail/getDetail", controller.GetDetail)
 	http.HandleFunc("/detail", controller.Detail)
+
+	http.HandleFunc("/signup", controller.Signup)
+	http.HandleFunc("/signupdata", controller.Signupdata)
+	http.HandleFunc("/signin", controller.Signin)
+	http.HandleFunc("/signindata", controller.Signindata)
+
 	// database.Database()
 	serve()
 }
